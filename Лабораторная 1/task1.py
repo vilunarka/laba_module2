@@ -3,61 +3,109 @@ from typing import Union
 
 
 class Tree:
-    def __init__(self, variety: str, height: (int, float)):
-        if not isinstance(variety, (str)):
-            raise TypeError("Сорт дерева должен быть типа str")
-        self.variety = variety
+    """
+       >>> tree = Tree("Pine", 30)
+       >>> tree.trim_the_tree(12)
+       '18'
+       >>> tree.get_variety_tree()
+       'Pine'
+       >>> tree.hybridization("Larch")
+       'Гибридизация исходного дерева и Larch'
+    """
 
-        if not isinstance(height, (int, float)):
-            raise TypeError("Высота дерева должна быть типа int или float")
-        if height < 0:
-            raise ValueError("Высота дерева не может быть отрицательным числом")
+    def __init__(self, variety: str, height: (int, float)):
+        """
+        Создаёт объект дерева.
+        :param variety: Сорт дерева.
+        :param height: Высота дерева.
+        """
+        self.variety = variety
         self.height = height
 
-    def is_tall_tree(self) -> bool:
-        if self.height > 15:
-            return (True)
-        else:
-            return (False)
+    def get_variety_tree(self) -> str:
+        """
+        Возвращает сорт дерева.
+        """
+        return f"{self.variety}"
+
+    def hybridization(self, add_tree: str) -> str:
+        """
+        Гибридизация дерева.
+        :param dd_tree: Название дерева, соединенного с исходным.
+        :return: Уведомление, сообщающее об гибридизации.
+        """
+        return f"Гибридизация исходного дерева и {add_tree}"
 
     def trim_the_tree(self, lenght: float) -> None:
-        if not isinstance(lenght, (int, float)):
-            raise TypeError("Срезаемая часть дерева должна быть типа int или float")
-        if lenght < 0 and lenght > self.height:
-            raise ValueError("Срезаемая часть дерева должна положительным числом и меньше высоты дерева")
-        self.height = self.height - lenght
-        return self.height
+        """
+        Проверяет высоту дерева со срезом.
+        :param lenght: срезаемая часть .
+        :return: остаток дерева.
+        """
+        if lenght < 0:
+            raise ValueError("Размер файла должен быть положительным числом")
+        if lenght < self.height:
+            return f"{self.height - lenght}"
+        return f"{self.height}"
 
 
 class Car:
-    def __init__(self, brand: str, speed: (int, float)):
-        if not isinstance(brand, (str)):
-            raise TypeError("Марка машины должна быть типа str")
-        self.brand = brand
+    """
+        >>> car = Car("Opel", 0)
+        >>> car.parking()
+        True
+        >>> car.increase_speed(20)
+        '20'
+    """
 
-        if not isinstance(speed, (int, float)):
-            raise TypeError("Скорость должна быть типа int или float")
-        if speed < 0:
-            raise ValueError("Скорость не может быть отрицательным числом")
+    def __init__(self, brand: str, speed: (int, float)):
+        """
+        Создаёт объект машины.
+        :param brand: Марка машины.
+        :param speed: Скорость машины.
+        """
+        self.brand = brand
         self.speed = speed
 
     def parking(self) -> bool:
+        """
+        Проверяет стоит ли машина.
+        :return: остаток дерева.
+        """
         if self.speed == 0:
             return (True)
         else:
             return (False)
 
     def increase_speed(self, new_speed: float) -> None:
+        """
+        Увеличение скорости.
+        :param new_speed: Добавляемая скорость.
+        :return: Итоговая скорость.
+        """
         if not isinstance(new_speed, (int, float)):
             raise TypeError("Добавляемая скорость должна быть типа int или float")
         if new_speed < 0:
             raise ValueError("Добавляемая скорость должна положительным числом")
         self.speed = self.speed + new_speed
-        return self.speed
+        return f"{self.speed}"
 
 
 class Cat:
+    """
+    >>> cat = Cat("Sphinx", 5)
+    >>> cat.presence_of_breed()
+    True
+    >>> cat.feed_the_cat(0.2)
+    '5.2'
+    """
+
     def __init__(self, breed: str, weight: (float, int)):
+        """
+        Создаёт объект кота.
+        :param breed: Порода кота.
+        :param weight: Вес кота.
+        """
         if not isinstance(breed, (str)):
             raise TypeError("Порода кота должна быть типа str")
         self.breed = breed
@@ -80,4 +128,4 @@ class Cat:
         if food < 0:
             raise ValueError("Вес еды должен быть положительным числом")
         self.weight = self.weight + food
-        return self.weight
+        return f"{self.weight}"
