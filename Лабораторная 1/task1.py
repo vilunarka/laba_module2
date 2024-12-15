@@ -117,12 +117,21 @@ class Cat:
         self.weight = weight
 
     def presence_of_breed(self) -> bool:
+        """
+        Проверяет есть ли порода у кота.
+        :return: True или False.
+        """
         if self.breed != None:
             return (True)
         else:
             return (False)
 
     def feed_the_cat(self, food: float) -> None:
+        """
+        Кормление кота.
+        :param new_speed: Количество корма.
+        :return: Итоговый вес кота.
+        """
         if not isinstance(food, (int, float)):
             raise TypeError("Вес еды должен быть типа int или float")
         if food < 0:
