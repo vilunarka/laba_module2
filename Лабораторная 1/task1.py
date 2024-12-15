@@ -1,7 +1,3 @@
-# TODO: Подробно описать три произвольных класса
-from typing import Union
-
-
 class Tree:
     """
        >>> tree = Tree("Pine", 30)
@@ -13,7 +9,7 @@ class Tree:
        'Гибридизация исходного дерева и Larch'
     """
 
-    def __init__(self, variety: str, height: (int, float)):
+    def __init__(self, variety: str, height: [int, float]):
         """
         Создаёт объект дерева.
         :param variety: Сорт дерева.
@@ -58,7 +54,7 @@ class Car:
         '20'
     """
 
-    def __init__(self, brand: str, speed: (int, float)):
+    def __init__(self, brand: str, speed: [int, float]):
         """
         Создаёт объект машины.
         :param brand: Марка машины.
@@ -70,14 +66,14 @@ class Car:
     def parking(self) -> bool:
         """
         Проверяет стоит ли машина.
-        :return: остаток дерева.
+        :return: True или False.
         """
         if self.speed == 0:
             return (True)
         else:
             return (False)
 
-    def increase_speed(self, new_speed: float) -> None:
+    def increase_speed(self, new_speed: [int, float]) -> None:
         """
         Увеличение скорости.
         :param new_speed: Добавляемая скорость.
@@ -90,7 +86,6 @@ class Car:
         self.speed = self.speed + new_speed
         return f"{self.speed}"
 
-
 class Cat:
     """
     >>> cat = Cat("Sphinx", 5)
@@ -100,13 +95,13 @@ class Cat:
     '5.2'
     """
 
-    def __init__(self, breed: str, weight: (float, int)):
+    def __init__(self, breed: str, weight: [float, int]):
         """
         Создаёт объект кота.
         :param breed: Порода кота.
         :param weight: Вес кота.
         """
-        if not isinstance(breed, (str)):
+        if not isinstance(breed, str):
             raise TypeError("Порода кота должна быть типа str")
         self.breed = breed
 
@@ -129,7 +124,7 @@ class Cat:
     def feed_the_cat(self, food: float) -> None:
         """
         Кормление кота.
-        :param new_speed: Количество корма.
+        :param food: Количество корма.
         :return: Итоговый вес кота.
         """
         if not isinstance(food, (int, float)):
