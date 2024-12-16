@@ -1,3 +1,6 @@
+# TODO: Подробно описать три произвольных класса
+from typing import Union
+
 class Tree:
     """
        >>> tree = Tree("Pine", 30)
@@ -9,7 +12,7 @@ class Tree:
        'Гибридизация исходного дерева и Larch'
     """
 
-    def __init__(self, variety: str, height: [int, float]):
+    def __init__(self, variety: str, height: Union[int, float]):
         """
         Создаёт объект дерева.
         :param variety: Сорт дерева.
@@ -54,7 +57,7 @@ class Car:
         '20'
     """
 
-    def __init__(self, brand: str, speed: [int, float]):
+    def __init__(self, brand: str, speed: Union[int, float]):
         """
         Создаёт объект машины.
         :param brand: Марка машины.
@@ -73,7 +76,7 @@ class Car:
         else:
             return (False)
 
-    def increase_speed(self, new_speed: [int, float]) -> None:
+    def increase_speed(self, new_speed: Union[int, float]) -> None:
         """
         Увеличение скорости.
         :param new_speed: Добавляемая скорость.
@@ -95,7 +98,7 @@ class Cat:
     '5.2'
     """
 
-    def __init__(self, breed: str, weight: [float, int]):
+    def __init__(self, breed: str, weight: Union[float, int]):
         """
         Создаёт объект кота.
         :param breed: Порода кота.
