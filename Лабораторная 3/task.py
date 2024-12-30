@@ -28,12 +28,12 @@ class PaperBook(Book):
         return self._pages
 
     @pages.setter
-    def pages(self, number_of_pages):
-        if not isinstance(number_of_pages, int):
+    def pages(self, value):
+        if not isinstance(value, int):
             raise TypeError("Количество страниц должно быть целым числом")
-        if number_of_pages <= 0:
+        if value <= 0:
             raise ValueError("Количество страниц должно быть положительным числом")
-        self._pages = number_of_pages
+        self._pages = value
 
 
 class AudioBook(Book):
@@ -46,9 +46,9 @@ class AudioBook(Book):
         return self._duration
 
     @duration.setter
-    def duration(self, book_duration):
-        if not isinstance(book_duration, (int, float)):
+    def duration(self, value):
+        if not isinstance(value, (int, float)):
             raise TypeError("Продолжительность должна быть типа int или float")
-        if book_duration <= 0:
+        if value <= 0:
             raise ValueError("Продолжительность должна быть положительным числом")
-        self._duration = book_duration
+        self._duration = value
