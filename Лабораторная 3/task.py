@@ -34,7 +34,11 @@ class PaperBook(Book):
         if value <= 0:
             raise ValueError("Количество страниц должно быть положительным числом")
         self._pages = value
-
+        
+    def __repr__(self):
+        return (
+            f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r}, pages={self.pages})"
+        )
 
 class AudioBook(Book):
     def __init__(self, name: str, author: str, duration: float):
@@ -52,3 +56,9 @@ class AudioBook(Book):
         if value <= 0:
             raise ValueError("Продолжительность должна быть положительным числом")
         self._duration = value
+
+    def __repr__(self):
+        return (
+            f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r}, duration={self.duration})"
+        )
+        
