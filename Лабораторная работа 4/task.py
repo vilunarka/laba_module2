@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import Any
 
 
 class SocialNetwork:
@@ -7,9 +7,9 @@ class SocialNetwork:
 
     Атрибуты:
         name (str): Название социальной сети.
-        users (Dict[str, Any]): Словарь пользователей, где ключом является имя пользователя, а значением -
+        users (dict[str, Any]): Словарь пользователей, где ключом является имя пользователя, а значением -
             его данные.
-        posts (List[Dict[str, Any]]): Список постов в социальной сети, каждый пост представляет собой словарь.
+        posts (list[dict[str, Any]]): Список постов в социальной сети, каждый пост представляет собой словарь.
     """
 
     def __init__(self, name: str) -> None:
@@ -20,8 +20,8 @@ class SocialNetwork:
             name (str): Название социальной сети.
         """
         self.name: str = name
-        self.users: Dict[str, Any] = {}
-        self.posts: List[Dict[str, Any]] = []
+        self.users: dict[str, Any] = {}
+        self.posts: list[dict[str, Any]] = []
 
     def __str__(self) -> str:
         """
@@ -41,22 +41,22 @@ class SocialNetwork:
         """
         return f"{self.__class__.__name__}(name='{self.name}')"
 
-    def add_user(self, username: str, user_data: Dict[str, Any]) -> None:
+    def add_user(self, username: str, user_data: dict[str, Any]) -> None:
         """
         Добавляет пользователя в социальную сеть.
 
         Args:
             username (str): Имя пользователя.
-            user_data (Dict[str, Any]): Данные пользователя.
+            user_data (dict[str, Any]): Данные пользователя.
         """
         self.users[username] = user_data
 
-    def add_post(self, post_data: Dict[str, Any]) -> None:
+    def add_post(self, post_data: dict[str, Any]) -> None:
         """
         Добавляет пост в социальную сеть.
 
           Args:
-            post_data (Dict[str, Any]): Данные поста.
+            post_data (dict[str, Any]): Данные поста.
           """
         self.posts.append(post_data)
 
@@ -67,7 +67,7 @@ class VK(SocialNetwork):
 
     Атрибуты:
         name (str): Название социальной сети (установлено как "VK").
-        groups (Dict[str, Any]): Словарь групп в VK, где ключом является название группы, а значением - ее
+        groups (dict[str, Any]): Словарь групп в VK, где ключом является название группы, а значением - ее
             данные.
     """
 
@@ -76,7 +76,7 @@ class VK(SocialNetwork):
         Конструктор дочернего класса VK. Наследует конструктор родителя и добавляет новые атрибуты.
         """
         super().__init__(name="VK")
-        self.groups: Dict[str, Any] = {}
+        self.groups: dict[str, Any] = {}
 
     def __str__(self) -> str:
         """
@@ -90,22 +90,22 @@ class VK(SocialNetwork):
         """
         return f"{self.__class__.__name__}()"
 
-    def add_group(self, group_name: str, group_data: Dict[str, Any]) -> None:
+    def add_group(self, group_name: str, group_data: dict[str, Any]) -> None:
         """
         Добавляет группу в VK.
 
         Args:
             group_name (str): Название группы.
-            group_data (Dict[str, Any]): Данные группы.
+            group_data (dict[str, Any]): Данные группы.
         """
         self.groups[group_name] = group_data
 
-    def share_post(self, post_data: Dict[str, Any]) -> None:
+    def share_post(self, post_data: dict[str, Any]) -> None:
         """
         Перегруженный метод для добавления поста в VK.
         В VK посты добавляются не в общий список, а в ленту группы или пользователя
         Args:
-            post_data (Dict[str, Any]): Данные поста.
+            post_data (dict[str, Any]): Данные поста.
         """
         self.posts.append(post_data)
 
@@ -118,7 +118,7 @@ class VK(SocialNetwork):
             username (str): Имя пользователя.
 
           Returns:
-            Dict[str, Any] | None: Данные пользователя, если он найден, или None, если не найден.
+            dict[str, Any] | None: Данные пользователя, если он найден, или None, если не найден.
 
         """
         return self.users.get(username)
@@ -130,10 +130,10 @@ class Facebook(SocialNetwork):
 
     Атрибуты:
         name (str): Название социальной сети (установлено как "Facebook").
-        pages (Dict[str, Any]): Словарь страниц в Facebook, где ключом является название страницы, а значением - ее
+        pages (dict[str, Any]): Словарь страниц в Facebook, где ключом является название страницы, а значением - ее
             данные.
-        _privacy_settings (Dict[str, Any]): Непубличный атрибут для хранения настроек приватности пользователей.
-            Инкапсуляция необходима, так как не все пользователи должны иметь возможность просматривать.
+        _privacy_settings (dict[str, Any]): Непубличный атрибут для хранения настроек приватности пользователей.
+            Инкапсуляция необходима, так как не все пользователи должны иметь возможность просматривать
             данные о приватности.
     """
 
@@ -142,8 +142,8 @@ class Facebook(SocialNetwork):
         Конструктор дочернего класса Facebook. Наследует конструктор родителя и добавляет новые атрибуты.
         """
         super().__init__(name="Facebook")
-        self.pages: Dict[str, Any] = {}
-        self._privacy_settings: Dict[str, Any] = {}
+        self.pages: dict[str, Any] = {}
+        self._privacy_settings: dict[str, Any] = {}
 
     def __str__(self) -> str:
         """
@@ -157,27 +157,27 @@ class Facebook(SocialNetwork):
          """
         return f"{self.__class__.__name__}()"
 
-    def add_page(self, page_name: str, page_data: Dict[str, Any]) -> None:
+    def add_page(self, page_name: str, page_data: dict[str, Any]) -> None:
         """
         Добавляет страницу в Facebook.
 
           Args:
             page_name (str): Название страницы.
-            page_data (Dict[str, Any]): Данные страницы.
+            page_data (dict[str, Any]): Данные страницы.
           """
         self.pages[page_name] = page_data
 
-    def set_privacy_settings(self, username: str, settings: Dict[str, Any]) -> None:
+    def set_privacy_settings(self, username: str, settings: dict[str, Any]) -> None:
         """
         Устанавливает настройки приватности для пользователя.
 
          Args:
           username (str): Имя пользователя.
-          settings (Dict[str, Any]): Настройки приватности пользователя.
+          settings (dict[str, Any]): Настройки приватности пользователя.
          """
         self._privacy_settings[username] = settings
 
-    def get_privacy_settings(self, username: str) -> Dict[str, Any]:
+    def get_privacy_settings(self, username: str) -> dict[str, Any]:
         """
          Получает настройки приватности для пользователя.
           Инкапсуляция необходима для защиты доступа к данным о приватности.
@@ -185,16 +185,16 @@ class Facebook(SocialNetwork):
              username (str): Имя пользователя.
 
           Returns:
-             Dict[str, Any]: Настройки приватности пользователя.
+             dict[str, Any]: Настройки приватности пользователя.
           """
         return self._privacy_settings.get(username, {})
 
-    def add_post(self, post_data: Dict[str, Any]) -> None:
+    def add_post(self, post_data: dict[str, Any]) -> None:
         """
         Перегруженный метод для добавления поста в Facebook.
         В Facebook посты добавляются с учетом приватности и настроек пользователей
           Args:
-            post_data (Dict[str, Any]): Данные поста.
+            post_data (dict[str, Any]): Данные поста.
         """
         self.posts.append(post_data)
 
